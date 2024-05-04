@@ -1,0 +1,28 @@
+/* Increase font size for better readability */
+.container h2 {
+    font-size: 24px;
+}
+
+/* Add some padding and background color to result section */
+.result-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 5px;
+}
+
+/* Style individual stock data entries */
+.result-section p {
+    margin-bottom: 5px;
+}
+
+/* Style the chart section */
+.chart-section {
+    margin-top: 40px;
+}
+
+/* Style the Plotly chart container */
+#stock-chart {
+    width: 100%; /* Make chart responsive */
+    height: 400px; /* Set chart height */
+}

@@ -1,0 +1,70 @@
+<!-- stock_result.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Result</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Include your custom CSS file -->
+    <link rel="stylesheet" href="{% static 'stockapp/css/custom.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Stock Data</h2>
+        <div class="result-section">
+            <p>Display stock data here...</p>
+            <!-- Example: Display fetched stock data -->
+            {% for date, row in stock_data.iterrows %}
+                <p>Date: {{ date }}</p>
+                <p>Open Price: {{ row.Open }}</p>
+                <p>Close Price: {{ row.Close }}</p>
+                <hr>
+            {% endfor %}
+        </div>
+        
+        <!-- Plotly chart container -->
+        <div class="chart-section">
+            <h2>Stock Chart</h2>
+            <div id="stock-chart"></div>
+        </div>
+    </div>
+
+    <script>
+        // Example Plotly chart
+        var trace1 = {
+            x: ['2024-01-01', '2024-01-02', '2024-01-03'], // Example dates
+            y: [100, 110, 105], // Example open prices
+            mode: 'lines',
+            type: 'scatter',
+            name: 'Open Price'
+        };
+
+        var trace2 = {
+            x: ['2024-01-01', '2024-01-02', '2024-01-03'], // Example dates
+            y: [105, 115, 110], // Example close prices
+            mode: 'lines',
+            type: 'scatter',
+            name: 'Close Price'
+        };
+
+        var data = [trace1, trace2];
+
+        var layout = {
+            title: 'Stock Prices',
+            xaxis: {
+                title: 'Date'
+            },
+            yaxis: {
+                title: 'Price'
+            }
+        };
+
+        Plotly.newPlot('stock-chart', data, layout);
+    </script>
+</body>
+</html>
